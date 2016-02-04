@@ -5,24 +5,24 @@ import java.net.URL;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 public class music {
-public static void backgroundsound(){//¿ªÊ¼±³¾°ÒôÀÖ·½·¨(ËæÄñ/×Óµ¯¾¡¶ø½áÊø)
+public static void backgroundsound(){//å¼€å§‹èƒŒæ™¯éŸ³ä¹æ–¹æ³•(éšé¸Ÿ/å­å¼¹å°½è€Œç»“æŸ)
 	new Thread(new Runnable() {
 		@Override
 		public void run() {
 			AePlayWave apw=new AePlayWave(music.class.getResource("sounds/backgroundsound.wav")); 
 			apw.start();
-//			System.out.println("¿ªÊ¼²¥·Å");
+//			System.out.println("å¼€å§‹æ’­æ”¾");
 				boolean isRun=true;
-		while(isRun){//Ñ­»·Ñ¯ÎÊÊÇ·ñĞèÒª½áÊø
+		while(isRun){//å¾ªç¯è¯¢é—®æ˜¯å¦éœ€è¦ç»“æŸ
 		if(MainFrame.getAmmoNum()<=0||BirdLabel.getRemainbirds()<=0){
 						apw.stop();
-//						System.out.println("½áÊø²¥·Å");
+//						System.out.println("ç»“æŸæ’­æ”¾");
 						isRun=false;
 		}
 
 		try {
-		Thread.sleep(1000);//¼ä¸ôÊ±¼ä
-//		System.out.println("Ñ¯ÎÊ");
+		Thread.sleep(1000);//é—´éš”æ—¶é—´
+//		System.out.println("è¯¢é—®");
 		} catch (InterruptedException e) {
 		e.printStackTrace();
 		}
@@ -30,53 +30,19 @@ public static void backgroundsound(){//¿ªÊ¼±³¾°ÒôÀÖ·½·¨(ËæÄñ/×Óµ¯¾¡¶ø½áÊø)
 		}
 		}).start();
 } 
-
-//¿ªÊ¼±³¾°ÒôÀÖ ·µ»Øapw
-/*	AePlayWave apw=new AePlayWave("./sounds/backgroundsound.wav"); 
-	apw.start();
-	System.out.println("¿ªÊ¼²¥·Å");
-		boolean isRun=true;
-		while(isRun){
-//			System.out.println("Ñ¯ÎÊÇ°");
-			if(MainFrame.getAmmoNum()<=0||BirdLabel.getRemainbirds()<=0){
-				apw.stop();
-//				System.out.println("½áÊø²¥·Å");
-				isRun=false;
-			}
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				}
-}
-*/
-
-/*	if(MainFrame.getAmmoNum()<=0||BirdLabel.getRemainbirds()<=0){
-		apw.stop();
-	}*/
-
-/*public static void stopbackgroundsound(){//Í£Ö¹±³¾°ÒôÀÖ·½·¨
-	AePlayWave apw=MainFrame.a;
-	apw.stop();
-	System.out.println("½áÊø²¥·Å");
-//	System.exit(0);
-}*/
-
-public static void shotsound() { //ÉäÖĞÄñÉùÒô ·½·¨
+public static void shotsound() { //å°„ä¸­é¸Ÿå£°éŸ³ æ–¹æ³•
 			AePlayWave apw=new AePlayWave(music.class.getResource("sounds/shotsound.wav")); 
 			apw.start();
-//			System.out.println("»÷ÖĞ");
+//			System.out.println("å‡»ä¸­");
 } 
 }
- class AePlayWave{//»ñµÃÒôÀÖÎ»ÖÃ
-//	volatile boolean stop = false;
+ class AePlayWave{//è·å¾—éŸ³ä¹ä½ç½®
+
 	AudioStream as=null;
 	public AePlayWave(URL url) {
-//		URL filename = url;
+
 		try {
-//			audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+
 			BufferedInputStream fileau = new BufferedInputStream(url.openStream());
 	        as = new AudioStream(fileau); 
 
@@ -85,11 +51,11 @@ public static void shotsound() { //ÉäÖĞÄñÉùÒô ·½·¨
 		return;
 	}
 }
-	public void start() {//²¥·Å
+	public void start() {//æ’­æ”¾
 		// TODO Auto-generated method stub
         AudioPlayer.player.start(as);
 	}
-	public void stop(){//Í£Ö¹
+	public void stop(){//åœæ­¢
 		AudioPlayer.player.stop(as);
 	}
 }
